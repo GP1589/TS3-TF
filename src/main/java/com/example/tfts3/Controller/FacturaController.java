@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.tfts3.DAO.ProductoDAO;
 import com.example.tfts3.Models.Cliente;
 import com.example.tfts3.Models.DetalleFactura;
+import com.example.tfts3.Models.DetalleFacturaId;
 import com.example.tfts3.Models.Facturas;
 import com.example.tfts3.Models.Producto;
 import com.example.tfts3.Services.IClienteService;
@@ -56,22 +57,51 @@ public class FacturaController {
     //     return "crear-factura";
     // }
 
-    @PostMapping("/procesar")
-    public String crearFactura() {        
+    //@PostMapping("/procesar")
+    // @GetMapping("/procesar")
+    // public String crearFactura() {        
+    //     Facturas factura = new Facturas();
+    //     Long id=7L;
+    //     Cliente cliente=clienteService.findOne(id);        
+    //     factura.setCliente(cliente);
+    //     factura.setId(UUID.randomUUID().toString());    
+    //     facturaRepository.save(factura);        
+    //     ArrayList<Producto> lista = DAO.getList();
+    //     //DetalleFactura df=new DetalleFactura();
+    //     for (Producto row : lista) {
+    //         DetalleFactura df=new DetalleFactura();
+    //         DetalleFacturaId df_id=new DetalleFacturaId(factura.getId(),row.getId());
+    //         df.setId(df_id);
+    //         df.setPrecio_unitario(row.getCosto());
+    //         df.setCantidad(1);
+    //         detalleFacturaService.save(df); 
+    //     }
+    //     DAO.deleteAll();
+    //     return "redirect:/productos";
+    // }
+    @GetMapping("/procesar")
+    public String crearFactura() {
         Facturas factura = new Facturas();
-        Long id=7L;
-        Cliente cliente=clienteService.findOne(id);        
+        Long id = 1L;
+        Cliente cliente = clienteService.findOne(id);
         factura.setCliente(cliente);
-        factura.setId(UUID.randomUUID().toString());    
-        facturaRepository.save(factura);        
+        factura.setId(UUID.randomUUID().toString());
+        facturaRepository.save(factura);
         ArrayList<Producto> lista = DAO.getList();
-        for (Producto row : lista) {
-            //DetalleFactura df= 
-            
-            
+        for (Producto producto : lista) {
+            DetalleFacturaId detalleFacturaId = new DetalleFacturaId(factura.getId(), producto.getId());
+            DetalleFactura detalleFactura = new DetalleFactura();
+            detalleFactura.setId(detalleFacturaId);
+            detalleFactura.setFactura(factura);
+            detalleFactura.setProducto(producto);
+            detalleFactura.setCantidad(1);
+            detalleFactura.setPrecio_unitario(producto.getCosto());
+            detalleFacturaService.save(detalleFactura); 
         }
-        return "redirect:/facturas";
+        DAO.deleteAll();
+        return "redirect:/productos";
     }
+
 
     @GetMapping("/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable String id, Model model) {

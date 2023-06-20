@@ -18,4 +18,7 @@ public class ProductoDAO {
     public void delete(Producto producto){
         lista.remove(producto);
     }
+    public void deleteAll(){
+        lista.clear();
+    }
 }

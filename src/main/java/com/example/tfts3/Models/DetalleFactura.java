@@ -23,14 +23,14 @@ public class DetalleFactura {
     private float precio_unitario;
     // Constructor, getters y setters
 
-    public DetalleFactura(DetalleFacturaId id, Facturas factura, Producto producto, int cantidad,
-            float precio_unitario) {
-        this.id = id;
-        this.factura = factura;
-        this.producto = producto;
-        this.cantidad = cantidad;
-        this.precio_unitario = precio_unitario;
-    }
+    // public DetalleFactura(DetalleFacturaId id, Facturas factura, Producto producto, int cantidad,
+    //         float precio_unitario) {
+    //     this.id = id;
+    //     this.factura = factura;
+    //     this.producto = producto;
+    //     this.cantidad = cantidad;
+    //     this.precio_unitario = precio_unitario;
+    // }
 
     public DetalleFacturaId getId() {
         return id;
