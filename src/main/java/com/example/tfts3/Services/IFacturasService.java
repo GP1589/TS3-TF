@@ -7,6 +7,6 @@ import com.example.tfts3.Models.Facturas;
 public interface IFacturasService {
     public List<Facturas> findAll();
     public void save(Facturas facturas);
-    public Facturas findOne(Long codigo);
-    public void delete(Long codigo);
+    public Facturas findOne(String codigo);
+    public void delete(String codigo);
 }

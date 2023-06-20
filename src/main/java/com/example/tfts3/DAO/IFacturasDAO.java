@@ -4,6 +4,6 @@ import org.springframework.stereotype.Repository;
 
 import com.example.tfts3.Models.Facturas;
 @Repository
-public interface IFacturasDAO extends JpaRepository <Facturas,Long> {
+public interface IFacturasDAO extends JpaRepository <Facturas,String> {
     
 }

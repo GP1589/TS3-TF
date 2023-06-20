@@ -14,7 +14,7 @@ public class FacturasService implements IFacturasService{
     private IFacturasDAO facturasDAO;
 
     @Override
-    public void delete(Long codigo) {
+    public void delete(String codigo) {
         // TODO Auto-generated method stub
         facturasDAO.deleteById(codigo);;
     }
@@ -26,7 +26,7 @@ public class FacturasService implements IFacturasService{
     }
 
     @Override
-    public Facturas findOne(Long codigo) {
+    public Facturas findOne(String codigo) {
         // TODO Auto-generated method stub
         return facturasDAO.findById(codigo).orElseThrow(null);
     }
