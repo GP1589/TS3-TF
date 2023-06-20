@@ -19,9 +19,9 @@ import jakarta.persistence.Table;
 @Table(name="Facturas")
 public class Facturas {
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotNull
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
+    //@NotNull
     private double monto;
     //
     @ManyToOne
@@ -35,10 +35,10 @@ public class Facturas {
     )
     private List<Producto> productos = new ArrayList<>();
     
-    public Long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
     public double getMonto() {

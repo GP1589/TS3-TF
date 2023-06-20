@@ -6,20 +6,20 @@ import jakarta.persistence.*;
 
 @Embeddable
 public class DetalleFacturaId implements Serializable {
-    private Long facturaId;
+    private String facturaId;
     private Long productoId;
     private static final long serialVersionUID=1L;
     // Constructor, getters and setters, equals, and hashCode
 
     
-    public Long getFacturaId() {
+    public String getFacturaId() {
         return facturaId;
     }
-    public DetalleFacturaId(Long facturaId, Long productoId) {
+    public DetalleFacturaId(String facturaId, Long productoId) {
         this.facturaId = facturaId;
         this.productoId = productoId;
     }
-    public void setFacturaId(Long facturaId) {
+    public void setFacturaId(String facturaId) {
         this.facturaId = facturaId;
     }
     public Long getProductoId() {
