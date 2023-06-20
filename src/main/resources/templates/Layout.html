@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!-- <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head> -->
+  <th:block layout:insert="~{fragments/Head}" />
+  <body>
+    <th:block layout:replace="~{fragments/Topbar}"/>
+    <th:block layout:replace="~{fragments/NavBar}" />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- <th:block layout:insert="~{fragments/pagetitle}"/> -->
+          <!-- <h1>Initial Page</h1> -->
+          <th:block layout:fragment="content" />
+        </div>
+      </div>
+    </div>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i><a>
+    <th:block layout:replace="~{fragments/Footer}"/>
+    <!-- <th:block layout:fragment="body_end"/> -->
+    <th:block layout:replace="~{fragments/Scripts :: end}" />
+  </body>
+</html>

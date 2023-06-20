@@ -1,0 +1,5 @@
+-- INSERT INTO curso (codigo, ciclo, creditos, nombre) VALUES (1, 2, 3, 'Introducción a la programación');
+-- INSERT INTO curso (codigo, ciclo, creditos, nombre) VALUES (2, 4, 4, 'Estructuras de datos');
+-- INSERT INTO curso (codigo, ciclo, creditos, nombre) VALUES (3, 3, 3, 'Programación Orientada a Objetos');
+-- INSERT INTO curso (codigo, ciclo, creditos, nombre) VALUES (4, 3, 4, 'Base de Datos');
+-- INSERT INTO curso (codigo, ciclo, creditos, nombre) VALUES (5, 1, 5, 'Ingeniería de Software');

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<<<<<<< HEAD
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:with="http://www.thymeleaf.org/extras/with"
+      layout:decorate="~{Layout}"
+      with:title="'General Index'">
+<th:block layout:fragment="content">
+    <p>This is an example project to support rendering both full pages and partial pages</p>
+    <p><a th:href="@{/marcas}" href="marcas.html">Show marcas</a></p>
+</th:block>
+</html>
+=======
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:with="http://www.thymeleaf.org/extras/with"
+  layout:decorate="~{Layout}"
+  with:title="'General Index'"
+>
+  <th:block layout:fragment="content">
+    <div class="container-fluid mb-3" style="min-height: 1000px;">
+      <p>
+        This is an example project to support rendering both full pages and partial pages
+      </p>
+      <p><a href="#">Show cities</a></p>
+    </div>
+  </th:block>
+</html>
+>>>>>>> b49d99bd83448a9af6beb2654915084aec32dba4
