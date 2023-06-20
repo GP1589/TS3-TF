@@ -10,11 +10,15 @@ public class DetalleFacturaId implements Serializable {
     private Long productoId;
     private static final long serialVersionUID=1L;
     // Constructor, getters and setters, equals, and hashCode
-
     
     public String getFacturaId() {
         return facturaId;
     }
+
+    public DetalleFacturaId() {
+        // Constructor sin argumentos
+    }
+
     public DetalleFacturaId(String facturaId, Long productoId) {
         this.facturaId = facturaId;
         this.productoId = productoId;
@@ -27,8 +31,6 @@ public class DetalleFacturaId implements Serializable {
     }
     public void setProductoId(Long productoId) {
         this.productoId = productoId;
-    }
-
-    
+    } 
     
 }
