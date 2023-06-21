@@ -18,7 +18,24 @@ public class ProductoDAO {
     public void delete(Producto producto){
         lista.remove(producto);
     }
+
     public void deleteAll(){
         lista.clear();
     }
+    public Producto findById(Long id){
+        Producto pbid = null;
+        Iterator<Producto> it = lista.iterator();
+        do {
+            if (!it.hasNext()) {
+                break;
+            }
+            Producto ae = it.next();
+            if (ae.getId()==id) {
+                pbid = ae;
+                break;
+            }
+        } while (true);
+        return pbid;
+    }
+    
 }

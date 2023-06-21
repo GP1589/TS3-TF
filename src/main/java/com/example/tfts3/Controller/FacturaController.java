@@ -149,6 +149,12 @@ public class FacturaController {
         return modelAndView;
     }
 
+    @RequestMapping(value="/delete/{id}", method = RequestMethod.POST)
+    public ModelAndView deleteFromBasket(@PathVariable("id") Long id) {
+        Producto producto = DAO.findById(id);
+        DAO.delete(producto);
+        return new ModelAndView("redirect:/facturas/basket");
+    }
 
 }
 

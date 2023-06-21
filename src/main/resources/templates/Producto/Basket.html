@@ -39,7 +39,9 @@
 						</thead>
 						<tbody class="align-middle" th:each="producto: ${productos}">
 							<tr>
-								<img th:if="${producto.foto}" th:src="@{'/uploads/' + ${producto.foto}}" alt="" style="width: 50px;">
+								<td>
+									<img th:if="${producto.foto}" th:src="@{'/uploads/' + ${producto.foto}}" alt="" style="width: 50px;">
+								</td>
 								<td th:text="${producto.nombre}" class="align-middle"></td>
 								<td th:text="${producto.costo}" class="align-middle"></td>
 								<td class="align-middle">
@@ -58,8 +60,8 @@
 									</div>
 								</td>
 								<td id="total" th:text="${producto.costo}" class="align-middle"></td>
-								<td class="align-middle"><button class="btn btn-sm btn-danger" th:href="@{/productos/eliminar/} + ${producto.id}" 
-									th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"><i class="fa fa-times"></i></button></td>
+								<td class="align-middle"><button class="btn btn-sm btn-danger" th:href="@{/facturas/delete/} + ${producto.id}" 
+									th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres quitar el producto de la canasta?');"><i class="fa fa-times"></i></button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -90,7 +92,8 @@
 								<h5>Total</h5>
 								<h5>$160</h5>
 							</div>
-							<button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+							<!-- <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" >Proceed To Checkout</button> -->
+							<p><a th:href="@{/facturas/procesar}" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Procesar Compra</a></p>
 						</div>
 					</div>
 				</div>
