@@ -265,63 +265,79 @@ h6 {
 .gradient-custom-2 {
   /* fallback for old browsers */
   background: #fccb90;
-  
+
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-  
+  background: linear-gradient(to right, #0b3d73, #2e67a4, #176fce, #007bff);
+
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-  }
-  
-  @media (min-width: 768px) {
+  background: linear-gradient(to right, #0b3d73, #2e67a4, #176fce, #007bff);
+}
+
+@media (min-width: 768px) {
   .gradient-form {
-  height: 100vh !important;
+    height: 100vh !important;
   }
-  }
-  @media (min-width: 769px) {
+}
+@media (min-width: 769px) {
   .gradient-custom-2 {
-  border-top-right-radius: .3rem;
-  border-bottom-right-radius: .3rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
   }
-  }
-  .card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 1rem;
-    line-height: 2.15;
-    padding-left: .75em;
-    padding-right: .75em;
-    }
-    .card-registration .select-arrow {
-    top: 13px;
-    }
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+.card-registration .select-arrow {
+  top: 13px;
+}
 
+.custom-file-input2 {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
 
+.custom-file-label2 {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  display: inline-block;
+}
 
-    .custom-file-input2 {
-      visibility: hidden;
-      width: 0;
-      height: 0;
-    }
-    
-    .custom-file-label2 {
-      cursor: pointer;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 6px 12px;
-      display: inline-block;
-    }
-    
-    .custom-file-label2::after {
-      content: 'Seleccionar archivo';
-    }
-    
-    .custom-file-input2:focus ~ .custom-file-label2 {
-      outline: 1px dotted #aaa;
-      outline-offset: -2px;
-    }
-    
-    .custom-file-input2:disabled ~ .custom-file-label2 {
-      background-color: #e9ecef;
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    
+.custom-file-label2::after {
+  content: "Seleccionar archivo";
+}
+
+.custom-file-input2:focus ~ .custom-file-label2 {
+  outline: 1px dotted #aaa;
+  outline-offset: -2px;
+}
+
+.custom-file-input2:disabled ~ .custom-file-label2 {
+  background-color: #e9ecef;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.error-popup {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.error-popup.hidden {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
