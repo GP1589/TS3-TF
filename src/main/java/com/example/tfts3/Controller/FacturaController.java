@@ -81,13 +81,15 @@ public class FacturaController {
     // }
     @GetMapping("/procesar")
     public String crearFactura() {
+        ArrayList<Producto> lista = DAO.getList();
+        double totalProducto=0;
+        double monto=0;
         Facturas factura = new Facturas();
         Long id = 1L;
         Cliente cliente = clienteService.findOne(id);
         factura.setCliente(cliente);
-        factura.setId(UUID.randomUUID().toString());
-        facturaRepository.save(factura);
-        ArrayList<Producto> lista = DAO.getList();
+        factura.setId(UUID.randomUUID().toString());        
+        facturaRepository.save(factura);        
         for (Producto producto : lista) {
             DetalleFacturaId detalleFacturaId = new DetalleFacturaId(factura.getId(), producto.getId());
             DetalleFactura detalleFactura = new DetalleFactura();
@@ -96,11 +98,71 @@ public class FacturaController {
             detalleFactura.setProducto(producto);
             detalleFactura.setCantidad(1);
             detalleFactura.setPrecio_unitario(producto.getCosto());
+            totalProducto=detalleFactura.getPrecio_unitario()*detalleFactura.getCantidad();
+            monto+=totalProducto;
             detalleFacturaService.save(detalleFactura); 
         }
+        factura.setMonto(monto);
+        facturaRepository.save(factura);  
         DAO.deleteAll();
         return "redirect:/productos";
     }
+    // @PostMapping("/procesar")
+    // public String crearFactura(@ModelAttribute("productos") List<Producto> productos) {
+    //     double totalProducto=0;
+    //     double monto=0;
+    //     Facturas factura = new Facturas();
+    //     Long id = 1L;
+    //     Cliente cliente = clienteService.findOne(id);
+    //     factura.setCliente(cliente);
+    //     factura.setId(UUID.randomUUID().toString());        
+    //     facturaRepository.save(factura);
+    //     for (Producto producto : productos) {
+    //         Producto productoi= productoRepository.findOne(producto.getId());
+    //         DetalleFacturaId detalleFacturaId = new DetalleFacturaId(factura.getId(), producto.getId());
+    //         DetalleFactura detalleFactura = new DetalleFactura();
+    //         detalleFactura.setId(detalleFacturaId);
+    //         detalleFactura.setFactura(factura);
+    //         detalleFactura.setProducto(productoi);
+    //         detalleFactura.setCantidad(producto.getPcantidad());
+    //         detalleFactura.setPrecio_unitario(productoi.getCosto());
+    //         totalProducto=detalleFactura.getPrecio_unitario()*detalleFactura.getCantidad();
+    //         monto+=totalProducto;
+    //         detalleFacturaService.save(detalleFactura);
+    //     };
+    //     factura.setMonto(monto);
+    //     facturaRepository.save(factura);  
+    //     DAO.deleteAll();
+    //     return "redirect:/productos";
+    // }
+    // @PostMapping("/procesar")
+    // public String crearFactura(@ModelAttribute("productos") List<Producto> productos) {
+    //     double totalProducto = 0;
+    //     double monto = 0;
+    //     Facturas factura = new Facturas();
+    //     Long id = 1L;
+    //     Cliente cliente = clienteService.findOne(id);
+    //     factura.setCliente(cliente);
+    //     factura.setId(UUID.randomUUID().toString());
+    //     facturaRepository.save(factura);
+    //     for (Producto producto : productos) {
+    //         Producto productoi = productoRepository.findOne(producto.getId());
+    //         DetalleFacturaId detalleFacturaId = new DetalleFacturaId(factura.getId(), producto.getId());
+    //         DetalleFactura detalleFactura = new DetalleFactura();
+    //         detalleFactura.setId(detalleFacturaId);
+    //         detalleFactura.setFactura(factura);
+    //         detalleFactura.setProducto(productoi);
+    //         detalleFactura.setCantidad(producto.getPcantidad());
+    //         detalleFactura.setPrecio_unitario(productoi.getCosto());
+    //         totalProducto = detalleFactura.getPrecio_unitario() * detalleFactura.getCantidad();
+    //         monto += totalProducto;
+    //         detalleFacturaService.save(detalleFactura);
+    //     }
+    //     factura.setMonto(monto);
+    //     facturaRepository.save(factura);
+    //     DAO.deleteAll();
+    //     return "redirect:/productos";
+    // }
 
 
     @GetMapping("/editar/{id}")
@@ -142,9 +204,18 @@ public class FacturaController {
     }
 
     @GetMapping("/basket")
-    public ModelAndView Listar() {        
+    public ModelAndView Listar(Model model) {        
         ModelAndView modelAndView = new ModelAndView("Producto/Basket");
+        List<Producto> lista=DAO.getList();
+        double subtotal=0;
+        double total=0;
+        for (Producto producto : lista) {
+            subtotal+=producto.getCosto();
+        };
+        total=subtotal+10;
         modelAndView.addObject("productos", DAO.getList());
+        modelAndView.addObject("subtotal", subtotal);
+        modelAndView.addObject("total",total);
         modelAndView.addObject("titulo", "Carrito de Compras");
         return modelAndView;
     }

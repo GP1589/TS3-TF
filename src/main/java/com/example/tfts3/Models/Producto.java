@@ -33,6 +33,8 @@ public class Producto {
 	private String foto;
 	@Transient
 	private MultipartFile file;
+    @Transient
+	private int pcantidad;
 
     @ManyToOne
     @JoinColumn(name = "marca_id") // nombre de la columna que representa la relación
@@ -98,6 +100,14 @@ public class Producto {
 
     public void setFile(MultipartFile file) {
         this.file = file;
+    }
+
+    public int getPcantidad() {
+        return pcantidad;
+    }
+
+    public void setPcantidad(int pcantidad) {
+        this.pcantidad = pcantidad;
     }
     
 }

@@ -11,16 +11,16 @@
             
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1" th:each="producto: ${productos}">
                 <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
+                    <a th:href="@{/productos/details/} + ${producto.id}"><div class="product-img position-relative overflow-hidden">
                         <!-- <img class="img-fluid w-100" th:src="@{img/product-10.jpg}" alt=""> -->
                         <img th:if="${producto.foto}" class="img-fluid w-100" th:src="@{'/uploads/' + ${producto.foto}}" alt="">
-                        <div class="product-action">
+                        <!-- <div class="product-action">
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
+                        </div> -->
+                    </div></a>
                     <div class="text-center py-4">
                         <!-- <a class="h6 text-decoration-none text-truncate" href="" th:text="${producto.nombre}"></a> -->
                         <a class="h6 text-decoration-none text-truncate" th:href="@{/productos/details/} + ${producto.id}" th:text="${producto.nombre}"></a>

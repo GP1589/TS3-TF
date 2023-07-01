@@ -84,8 +84,8 @@
 									<input type="radio" class="custom-control-input" id="color-5" name="color">
 									<label class="custom-control-label" for="color-5">Green</label>
 								</div>
-							</form>
-						</div>
+							</form>							
+						</div>				
 						<div class="d-flex align-items-center mb-4 pt-2">
 							<a class="btn btn-primary" th:href="@{/facturas/basket/} + ${producto.id}" th:text="'Añadir al carrito'"></a>
 						</div>
@@ -106,7 +106,7 @@
 								</a>
 							</div>
 						</div>
-					</div>
+					</di>
 				</div>
 			</div>
 			<div class="row px-xl-5">
@@ -217,38 +217,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<!-- <table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Foto</th>
-					<th>Nombre</th>
-					<th>Costo</th>
-					<th>Marca</th>
-					<th>Editar</th>
-					<th>Eliminar</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:object="${producto}">
-					<td> 
-						<img th:if="${producto.foto}"
-						class="" style="width: 80px;
-						height: 80px;
-						-moz-border-radius: 50px;
-						-webkit-border-radius: 50px;
-						border-radius: 50px;"
-						th:src="@{'/uploads/' + ${producto.foto}}" />
-					</td>
-					<td th:text="${producto.nombre}"></td>
-					<td th:text="${producto.costo}"></td>
-					<td th:text="${producto.marca.nombre}"></td>
-					<td><a class="btn btn-primary btn-xs" th:href="@{/facturas/basket/} + ${producto.id}" th:text="'add basket'"></a></td>
-					<td><a class="btn btn-danger btn-xs" th:href="@{/productos/eliminar/} + ${producto.id}" 
-					th:text="'eliminar'" onclick="return confirm('Estás seguro que quieres eliminar?');"></a></td>
-				</tr>
-			</tbody>
-		</table> -->
-      </th:block>
+		</div>		
+		
+      </th:block>	
 </html>
