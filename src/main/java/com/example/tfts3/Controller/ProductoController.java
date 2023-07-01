@@ -77,7 +77,7 @@ public class ProductoController {
     }
 
     // Mostrar la lista de productos
-    @GetMapping
+    @GetMapping("")
     public String mostrarListaProductos(Model model) {
         model.addAttribute("productos", productoRepository.findAll());
         return "Producto/ClienteIndex";

@@ -9,11 +9,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class HomeController {
-    // @GetMapping("/")
-    // public ModelAndView home() {
-    // ModelAndView modelAndView = new ModelAndView("Admin/IndexAdmin");
-    // return modelAndView;
-    // }
+    @GetMapping("/")
+    public ModelAndView home() {
+        ModelAndView modelAndView = new ModelAndView("redirect:/productos");
+        return modelAndView;
+    }
+
     @GetMapping("/Login")
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView("Home/Login");
@@ -25,21 +26,20 @@ public class HomeController {
     // }
 
     @PostMapping("/send")
-public String login(@RequestParam("username") String username, @RequestParam("password") String password, RedirectAttributes redirectAttributes) {
-    String hardcodedValue = "miguelangelcdm@gmail.com"; // Replace with your actual hardcoded value
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password,
+            RedirectAttributes redirectAttributes) {
+        String hardcodedValue = "miguelangelcdm@gmail.com"; // Replace with your actual hardcoded value
 
-    if (username.equals(hardcodedValue)) {
-        // Perform the necessary actions for successful login
-        
-        // Set the input value in session storage if required
-        // For example: session.setAttribute("inputValue", username);
+        if (username.equals(hardcodedValue)) {
+            // Perform the necessary actions for successful login
 
-        return "redirect:/";
-    } else {
-        redirectAttributes.addAttribute("error", "Invalid input. Please try again.");
-        return "redirect:/Login";
+            // Set the input value in session storage if required
+            // For example: session.setAttribute("inputValue", username);
+
+            return "redirect:/";
+        } else {
+            redirectAttributes.addAttribute("error", "Invalid input. Please try again.");
+            return "redirect:/Login";
+        }
     }
-}
-
-
 }
