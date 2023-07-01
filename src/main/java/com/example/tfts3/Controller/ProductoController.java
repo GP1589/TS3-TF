@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @SessionAttributes("producto")
-@RequestMapping("/productos")
+@RequestMapping("/")
 public class ProductoController {
     private final IProductoService productoRepository;
     private final IMarcaDAO marcaRepository;
