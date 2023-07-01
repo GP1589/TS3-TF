@@ -17,7 +17,7 @@ import com.example.tfts3.Services.IClienteService;
 import com.example.tfts3.Services.IDetalleFacturaService;
 import com.example.tfts3.Services.IFacturasService;
 import com.example.tfts3.Services.IProductoService;
-
+import java.text.DecimalFormat;
 import jakarta.validation.Valid;
 
 import java.util.ArrayList;
@@ -203,8 +203,25 @@ public class FacturaController {
         return new ModelAndView("redirect:/facturas/basket");
     }
 
+
+// public class Main {
+//     public static void main(String[] args) {
+//         double numero = 123.456789;
+        
+//         // Crea un formato con un máximo de dos decimales
+//         DecimalFormat formato = new DecimalFormat("#.##");
+        
+//         // Aplica el formato al número
+//         String numeroFormateado = formato.format(numero);
+        
+//         // Imprime el resultado
+//         System.out.println(numeroFormateado);
+//     }
+// }
     @GetMapping("/basket")
-    public ModelAndView Listar(Model model) {        
+    public ModelAndView Listar(Model model) {  
+        DecimalFormat formato = new DecimalFormat("#.##");
+        String totals,subtotals;   
         ModelAndView modelAndView = new ModelAndView("Producto/Basket");
         List<Producto> lista=DAO.getList();
         double subtotal=0;
@@ -213,12 +230,15 @@ public class FacturaController {
             subtotal+=producto.getCosto();
         };
         total=subtotal+10;
+        subtotals=formato.format(subtotal);
+        totals=formato.format(total);
         modelAndView.addObject("productos", DAO.getList());
-        modelAndView.addObject("subtotal", subtotal);
-        modelAndView.addObject("total",total);
+        modelAndView.addObject("subtotal", subtotals);
+        modelAndView.addObject("total",totals);
         modelAndView.addObject("titulo", "Carrito de Compras");
         return modelAndView;
     }
+    
 
     @RequestMapping(value="/delete/{id}", method = RequestMethod.POST)
     public ModelAndView deleteFromBasket(@PathVariable("id") Long id) {
